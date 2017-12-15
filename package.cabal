@@ -16,7 +16,11 @@ Flag buildExamples
   default:     False
 
 Library
-  Build-Depends:    base > 4, array, containers
+  Build-Depends:
+    prelude-compat >=0.0.0.1 && <0.1,
+    array,
+    containers,
+    base > 4
   GHC-Options: -package ghc
   hs-source-dirs: src
   Exposed-modules:

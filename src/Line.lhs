@@ -17,6 +17,9 @@ import Point  ( Point ((<+>),(<*>)), Point3, xcoord, ycoord, zcoord,
 import Point2 ( Point2 (..), P2, Orientation (..), orientation, angle2 )
 import Data.Maybe  ( isJust, fromJust )
 import qualified Point2 (translate, rotateOrg, reflect, rotate)
+
+import Prelude2010
+import Prelude ()
 \end{code}
 
 \begin{code}
