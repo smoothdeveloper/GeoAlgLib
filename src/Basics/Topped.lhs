@@ -13,6 +13,8 @@ a topped domain
 
 > module Basics.Topped where
 > 
+> import Control.Applicative (Applicative, pure, (<*>))
+>
 > import Prelude hiding (RealFloat (isInfinite))
 > 
 > data Topped a                 = Finite a | Infty 
@@ -25,6 +27,11 @@ a topped domain
 > instance Functor Topped where
 >     fmap f (Finite a)         = Finite (f a)
 >     fmap f Infty              = Infty
+> 
+> instance Applicative Topped where
+>     Finite f <*> Finite x     = Finite $ f x
+>     _ <*> _                   = Infty
+>     pure                      = Finite
 > 
 > instance Monad Topped where
 >     Infty >>= k               = Infty
