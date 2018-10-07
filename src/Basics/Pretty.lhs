@@ -177,6 +177,9 @@ module Basics.Pretty (
         render, fullRender
   ) where
 
+import Prelude2010
+import Prelude ()
+
 -- Don't import Util( assertPanic ) because it makes a loop in the module structure
 
 infixl 6 <> 
