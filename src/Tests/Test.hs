@@ -14,6 +14,9 @@ import Data.List    ( zip4 )
 import Basics.Random  ( randomInts, randomDoubles )
 import Basics.Utilities ( splitsAt )
 
+import Prelude2010
+import Prelude ()
+
 --
 -- PSEUDO-ZUFLLIGE MENGEN VON PUNKTEN
 --

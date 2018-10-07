@@ -27,6 +27,9 @@ import Line      ( Line (..), fromPDL, distanceFromLine, intersect, doIntersect 
 import Basics.Utilities ( rotateL, rotateR, rotateTo, snd3, uncurry3, rotateToBy )
 import qualified Triangle
 import Data.Array	 ( Array, listArray, (!) )
+
+import Prelude2010
+import Prelude ()
 \end{code}
 
 \begin{code}

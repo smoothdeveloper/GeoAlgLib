@@ -9,9 +9,18 @@ Category:    Computational Geometry
 Synopsis:    A library of geometric algorithms for Haskell
 Copyright:   (c) 1997, 1998, 2008 by Joern Dinkla, www.dinkla.net
 Maintainer:  joern@dinkla.net
+Build-Type:  Simple
+
+Flag buildExamples
+  description: Build example executables
+  default:     False
 
 Library
-  Build-Depends:    base > 4, array, containers
+  Build-Depends:
+    prelude-compat >=0.0.0.1 && <0.1,
+    array,
+    containers,
+    base > 4
   GHC-Options: -package ghc
   hs-source-dirs: src
   Exposed-modules:
@@ -28,24 +37,32 @@ Library
     Tests.Test, Tests.Polys,
     Applications.AllNearest, Applications.ClosestPair, Applications.DelaunayHull, Applications.MaxEmptyCircle,
     Applications.NearestPoint, Applications.OnionLayers
+  Other-modules:
+    Basics.FiniteMap
 
 Executable convexHulls
     Main-Is: Tests/ConvexHulls.hs
     hs-source-dirs: src
     Other-Modules: GrahamsScan, JarvisMarch, MergeHull, KirkpatrickSeidelHull, ChansConvexHull
     GHC-Options: -package ghc
+    If !flag(buildExamples)
+      Buildable: False
 
 Executable nearest
     Main-Is: Tests/Nearest.hs
     hs-source-dirs: src
     Other-Modules: Applications.NearestPoint DelaunayDAG
     GHC-Options: -package ghc
+    If !flag(buildExamples)
+      Buildable: False
 
 Executable rangeQueries
     Main-Is: Tests/RangeQueries.hs
     hs-source-dirs: src
     Other-Modules: KDTree RangeTree
     GHC-Options: -package ghc
+    If !flag(buildExamples)
+      Buildable: False
 
 Executable triangulations
     Main-Is: Tests/Triangulations.hs
@@ -53,16 +70,23 @@ Executable triangulations
     Other-Modules: ConvexTriangulation, NaiveTriangulation, MonotoneTriangulation, GareysTriangulation,
         KETTriangulation, AdaptTriangulation, MergeTriangulation
     GHC-Options: -package ghc
+    If !flag(buildExamples)
+      Buildable: False
 
 Executable voronoiDelaunay
     Main-Is: Tests/VoronoiDelaunay.lhs
     hs-source-dirs: src
     Other-Modules: Delaunay Voronoi
     GHC-Options: -package ghc
+    If !flag(buildExamples)
+      Buildable: False
 
 Executable glConvexHulls
     Main-Is: OpenGL/GL_ConvexHulls.lhs
     hs-source-dirs: src
     Other-Modules: GrahamsScan, JarvisMarch, MergeHull, KirkpatrickSeidelHull, ChansConvexHull
-    Build-Depends:    base, array, GLUT
     GHC-Options:  -package ghc
+    If flag(buildExamples)
+      Build-Depends: base, array, GLUT
+    Else
+      Buildable: False
