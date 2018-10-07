@@ -37,6 +37,8 @@ Library
     Tests.Test, Tests.Polys,
     Applications.AllNearest, Applications.ClosestPair, Applications.DelaunayHull, Applications.MaxEmptyCircle,
     Applications.NearestPoint, Applications.OnionLayers
+  Other-modules:
+    Basics.FiniteMap
 
 Executable convexHulls
     Main-Is: Tests/ConvexHulls.hs
